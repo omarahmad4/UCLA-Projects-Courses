@@ -1,0 +1,51 @@
+I made make_parser use helper functions very similar to make_matcher's helpers
+but not directly calling make_matcher's. This is because the main difference
+was that in make_parser, I had to note which rules were used and connect them
+to where they were applied to. This was done by simply changing one line in
+matcher_helper to produce parser_helper. This line was where the function
+returned the value that recursive calls returned (if they weren't none).
+So, instead of doing match with |retVal -> retVal , I did match with
+|Some retVal -> Some(RULEAPPLIED :: retVal) which saves the rule that was used.
+matcher_helper was mutually recursive with find_matches and so because they call
+each other, I had to rewrite find_matches as find_parse_matches for use with
+make_parser. find_parse_matches was identical to find_matches except it called
+parser_helper instead of matcher_helper. Similarly, parser_helper differed
+from matcher_helper by calling find_parse_matches instead fo find_matches.
+parser_helper produced parseData which was used in build_parse_tree to make
+a parse tree. For example, for a given frag
+"mark eats" (referring to my grammar in hw2test.ml), the parseData
+would be [[N Sent];[N Phrase];[N Noun;N Verb];[T "mark"];[T "eats"]].
+So, in the end, make_parser worked almost identically to make_matcher
+except for the difference above and the fact that it was called with
+its acceptor as accept_empty which only accepted empty suffixes. 
+
+My approach does have some weaknesses, the main one being the handling of
+grammar that is left-recursive. That is grammar that includes rules such as
+Phrase -> [N Phrase; T "and"; N "Phrase"]; I found this out by trying to test
+a grammar with such a rule and the program outputted:
+"Stack overflow during evaluation (looping recursion?)"
+This is because my approach gets stuck calling itself and constantly expanding
+the scope of what its trying to match. ie it keeps trying to apply the
+left-recursive rule until the stack overflows. This was not handled as it
+increases the complexity of the solution and the spec clearly said we don't
+need to handle it.
+I got around this in  my test case by modifying my grammar to not be
+left-recursive as in the examples in the book. I introduced a new nonterminal:
+Sent as the start symbol which had two rules:
+Send -> [ [N Phrase; T "and"; N Phrase]; [N Phrase] ]
+This ensures the functions don't get into an infinite recursion loop by not
+having any rules which have the same nonterminal symbol on the left and
+right-hand sides. The problem with this is that it doesn't reflect the reality
+of the possibilities of english (even in my simple grammar). That is, in real
+life, one can make a sentence of hundreds of phrases of the form:
+Bob eats and Mary drinks and John drinks and Gary ....
+However, my solution cannot handle this because it cannot handle
+left-recursion. To make a solution that can handle such cases, one would have
+to build a smarter matcher/parser that can look ahead into the fragment and
+predict which rules to apply. It should also compare its progress through each
+iteration to ensure it doesn't get stuck following rules down a rabbit hole
+without making any progress.
+Other than self-recursive nonterminals in a grammar, I am not aware of any
+weaknesses in my approach. It should be able to handle rules which point to
+empty lists such as: Phrase -> [] due its generality
+

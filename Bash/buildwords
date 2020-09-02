@@ -1,0 +1,3 @@
+#!/bin/sh
+a=$1
+grep '<td>.*</td>' $a | sed 's/<td>//g' | sed 's/<\/td>//g' | sed 's/<.>//g' | sed 's/<..>//g' | sed 's/(.*)//g' | tr [[:upper:]] [[:lower:]] | sed 's/, /\n/g' | grep -v [bcdfghjqrstvxyz] | sort -u | sed 's/^ //g' | sed 's/^ //g' | sed 's/^ //g' | sed 's/^ //g' | sed 's/^ //g' | comm -23 - words

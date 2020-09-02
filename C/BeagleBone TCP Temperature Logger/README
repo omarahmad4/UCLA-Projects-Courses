@@ -1,0 +1,38 @@
+NAME: Omar Ahmad
+EMAIL: omarahmad4@ucla.edu
+ID: 804801272
+
+Sources:
+- used prev projects in this class and prev classes at ucla as reference
+- used man pages for all functions used
+- used BBGW and mraa documentation found at
+  - http://wiki.seeedstudio.com/BeagleBone_Green_Wireless/
+  - https://iotdk.intel.com/docs/master/mraa/gpio_8h.html
+- for how to get time: http://www.cplusplus.com/reference/ctime/localtime/
+- for help with arg parsing:  https://www.gnu.org/software/libc/manual/html_node/Example-of-Getopt.html#Example-of-Getopt 
+
+
+
+
+
+FILES:
+source.c
+	 - connects with tcp to a host and port designated as command line args
+	 - source code for beaglebone green wireless and a grove cape connected to a tempereature sensor
+	 - ouputs the temperature in C or F every period seconds
+	 - takes commands at the command line or while program is running
+	 - can start and stop w START and STOP
+	 - can log any line of text with LOG [line of text]
+
+source2.c - source code for program that does all that source.c does but also uses a tls encrypted connection 
+
+Makefile -- targets:
+	 - default:
+	   builds lab4c_tcp from source.c with -lmraa -lm -g -Wall -Wextra flags
+	   builds lab4c_tls from source2.c with -lssl -lcrypto -lmraa -lm -g -Wall -Wextra flags
+	 - dist: creates tarball for submission with Makefile, README, and source.c
+	 - clean: removes executable lab4b and tarball
+
+README - this file - contains descriptions of all included files and sources used
+
+

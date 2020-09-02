@@ -1,0 +1,23 @@
+#!/bin/sh
+NumArgs=$#
+
+for var in "$@"
+do
+
+
+if [ -f "$var" ];
+    then
+	if  grep -qP "[^\x00-\x7F]" "$var" ;
+	then
+	    if ! head -n 1 "$var" | grep -q "\-\*\- coding: utf\-8 \-\*\-"
+	    then echo "$var"
+	    fi
+	fi
+    elif [ -d "$var" ];
+    then
+	for file in "$var"/*
+	do
+	    ./$0 "$file"
+	done
+    fi
+done

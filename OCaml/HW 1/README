@@ -1,0 +1,13 @@
+subset: used recursive pattern matching seperating head::tail as that seemed the most natural for ocaml
+
+equal_sets: called subset a b and subset b a - inefficient if inputs are crazy long b/c this goes through each element twice
+
+set_union: used @ operator because duplicates dont matter
+
+set_intersection: used recursive head::tail and List.exits to check if each element of a exists in b - could possibly be made more efficient (for large inputs) by sorting and then using binary search 
+
+set_diff: nearly identical to set_intersection - but adds head element if not present in b - thought i might need to write a more complicated function to handle the case [1;1;1] - [1] but it worked without added complications
+
+computed_fixed_point: a lot simpler than i thought it would be - ocaml seems suited to this type of application dealing with non-predefined operators and inputs
+
+filter_reachable: wrote 5 helper funcitons - two were simply getRHS and getLHS to make the code more readable - at a high level it simply follows the grammar as much as it can, noting which non-terminals were reached and at the end removes all rules that have a lhs not in the reachable list. First tried implementing without helper functions but it proved too complicated and messy to understand. Was also first not using pattern matching on the rules and instead attempting to use List functions only such as mem, filter, and iter. Could never get iter to work correctly as I am  assuming I didn't fully understand its syntax. Made much faster progress when I abandoned those fucntions and resorted to recursion and pattern matching ( as I should have done from the start ). 

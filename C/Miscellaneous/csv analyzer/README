@@ -1,0 +1,21 @@
+NAME: Omar Ahmad
+EMAIL: omarahmad4@ucla.edu
+ID: 804801272
+
+Description of files:
+source.c - source file for program that analyzes csv ouput of a file system analyzer and outputs any inconcsistencies in the file system 
+README -- (this file) contains descriptions of files and sources used
+Makefile -- targets:
+         - default: builds executable lab3a with flags -g -Wall and -Wextra
+         - dist: creates tarball as requested by professor in autogradable format containing all files discussed above
+         - clean: removes executable, and tarball
+	 - check: uses test csv files (not in tarball) to test program - same files used by the professor in the sanity checker
+
+
+Sources:
+- man pages for all functions used
+       - examples found in man pages used as templates
+- used previous cs35l and cs111 projects of mine to get basics
+- sources given in spec http://web.cs.ucla.edu/~harryxu/courses/111/spring19/ProjectGuide/P3B.html
+  - most importantly is the one describing the details of the ext2 file system: http://www.nongnu.org/ext2-doc/ext2.html#superblock
+  

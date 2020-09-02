@@ -1,0 +1,20 @@
+#!/bin/sh
+NumArgs=$#
+
+for var in "$@"
+do
+
+
+if [ -f "$var" ];
+    then
+	if  ! grep -qP "[^\x01-\x7F]" "$var" ;
+	then echo "$var"
+	fi
+    elif [ -d "$var" ];
+    then
+	for file in "$var"/*
+	do
+	    ./$0 "$file"
+	done
+    fi
+done
