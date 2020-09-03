@@ -1,1 +1,6 @@
+BeagleBone TCP Temperature Logger: Code for use on a beaglebone green wireless with a grove mraa temperature sensor (I used the IOT Devloper Prototyping kit from Saeed Studio) 
 
+Communication: 
+Malloc: 
+Miscellaneous: 
+Multithreading: 
