@@ -1,0 +1,5 @@
+Sphinx-themed Capstone Project Game involving player localization, voice recognition, and gesture recognition
+
+02.py - the file ran on the laptop - It uses Python's SpeechRecognition library for voice recognition and uses OpenPose for the gesture recognition. The file had to be named 02,py for OpenPose to work with it. 
+
+pi.py - the file ran on the Raspberry Pi Zero W - It is connected to a pair of ultrasonic HC-SR04 sensor's commonly used with Arduinos. It uses a background thread to constantly ping their distances, while the main thread is waiting for the laptop to make a request and responds with the most recent location info. 
