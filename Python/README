@@ -1,9 +1,9 @@
-Asyncio: learning asyncio and using a Google api along with logging
+Asyncio: For learning asyncio and using a Google api along with logging.
 
-Character to Bitmap: program I wrote to transalate a message of characters into a bitmap for each inidividual pixel in a display displaying that message. For example, if it is called with the message "UCLA" and display size 3 by 5, it will produce 15 csv files; one for each pixel producing an animation where the letters come from the top of the screen and dissapear out of the bottom. 
+Character to Bitmap: A program I wrote to transalate a message of characters into a bitmap for each inidividual pixel in a display displaying that message. For example, if it is called with the message "UCLA" and display size 3 by 5, it will produce 15 csv files; one for each pixel producing an animation where the letters come from the top of the screen and dissapear out of the bottom. 
 
-Image Processing: Some programs that use cv2; They are adaptivethresholding.py, edgedetection.py, liveedgedetection.py, objecttracking.py, rgbtogrey.py, and thresholding.py
+Image Processing: Some programs that use cv2; They are adaptivethresholding.py, edgedetection.py, liveedgedetection.py, objecttracking.py, rgbtogrey.py, and thresholding.py.
 
 Sphinx Sensor Network Game: The game we created for our capstone project. It is made up of 2 programs - one runs on a laptop and handles the main game along with gesture and voice recognition, while the other program runs on a Raspberry Pi Zero W that connects to the laptop using TCP and sends player location info obtained from ultrasonic sensors being monitored using multiple threads.
 
-shuf.py: learning OptionParser
+shuf.py: For learning OptionParser.
