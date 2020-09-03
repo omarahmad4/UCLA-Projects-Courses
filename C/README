@@ -1,6 +1,9 @@
 BeagleBone TCP Temperature Logger: Code for use on a beaglebone green wireless with a grove mraa temperature sensor (I used the IOT Devloper Prototyping kit from Saeed Studio) 
 
-Communication: 
-Malloc: 
-Miscellaneous: 
-Multithreading: 
+Communication: Example of server and client code using TCP sockets
+
+Malloc: Miscellaneous source code files from when first learning to use malloc. Also has an example of a Makefile
+
+Miscellaneous: A few random programs in C; Also a folder for a program that analyzes the csv ouput of a file system analyzer and outputs any inconcsistencies in the file system 
+
+Multithreading: A program that does operations on a linked list with or without different types of synchronizations and yielding (to cause race conditions) and splits lists into lists sublists
