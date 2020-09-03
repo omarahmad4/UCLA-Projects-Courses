@@ -20,7 +20,7 @@ TODO:
 '''
 
 
-API_KEY = 'AIzaSyBOsLK0qQ8BsA9ByfSi9DuoSePPjZATwGU'
+API_KEY = REMOVED
 IP_ADDR = '127.0.0.1'
 
 connections = {
